@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao Diện Menu Chia Cột Chủ Động</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #050505; /* Nền đen sâu */
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 60px 40px; 
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 100%; /* Trải dài full màn hình */
+        }
+
+        /* Tiêu đề chính lớn */
+        .title-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px; 
+        }
+
+        .title-container h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            padding-left: 15px;
+            border-left: 6px solid #00cd6c; /* Thanh dọc màu xanh lá */
+            line-height: 1;
+            letter-spacing: -0.5px;
+        }
+
+        /* ==========================================================================
+           CẤU TRÚC MỘT NHÓM MÔN HỌC (MENU SECTION)
+           ========================================================================== */
+        .menu-section {
+            margin-bottom: 50px; /* Khoảng cách giữa các nhóm ngành */
+            width: 100%;
+        }
+
+        /* Nhãn tên nhóm (Kế toán, IoT,...) */
+        .group-title-tag {
+            display: inline-block;
+            background-color: #ffffff; /* Nền trắng */
+            color: #000000;            /* Chữ đen */
+            font-size: 0.85rem;        
+            font-weight: 700;
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
+            padding: 5px 14px;
+            border-radius: 3px; 
+            margin-bottom: 25px;
+        }
+
+        /* KHUNG LƯỚI CHIA THÀNH 2 VÙNG CỘT RIÊNG BIỆT */
+        .menu-grid-columns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Tạo 2 vùng cột bằng nhau */
+            gap: 40px; /* Khoảng cách giữa cột 1 và cột 2 */
+            width: 100%;
+        }
+
+        /* Từng hộp cột riêng lẻ - Nội dung bên trong sẽ xếp chồng từ trên xuống dọc */
+        .menu-col {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        /* Định dạng từng môn học */
+        .menu-row {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 20px 10px;
+            border-bottom: 1px solid #16161a; /* Đường kẻ ngang mờ */
+            transition: all 0.2s ease;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Tạo đường kẻ trên cùng cho môn đầu tiên của mỗi cột */
+        .menu-col .menu-row:first-child {
+            border-top: 1px solid #16161a;
+        }
+
+
+        /* Tên môn học */
+        .menu-text {
+            font-size: 1.2rem;
+            color: #eeeeee;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        /* Hiệu ứng Hover */
+        .menu-row:hover {
+            background-color: #0d0d11;
+        }
+
+        .menu-row:hover .menu-text {
+            color: #00cd6c;
+        }
+
+        /* RESPONSIVE: TỰ ĐỘNG CHUYỂN THÀNH 1 CỘT TRÊN ĐIỆN THOẠI */
+        @media (max-width: 768px) {
+            .menu-grid-columns {
+                grid-template-columns: 1fr; /* Thu về 1 cột dọc duy nhất */
+                gap: 0;
+            }
+            .menu-col .menu-row:first-child {
+                border-top: none; /* Reset để tránh trùng lặp đường kẻ trên mobile */
+            }
+            .menu-col:first-child .menu-row:first-child {
+                border-top: 1px solid #16161a; /* Chỉ giữ đường kẻ trên cùng của môn đầu tiên */
+            }
+            body {
+                padding: 40px 20px;
+            }
+            .title-container h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        
+        <div class="title-container">
+            <h1>Menu</h1>
+        </div>
+
+        <div class="menu-section">
+            <div class="group-title-tag">Khai báo hải quan</div>
+            
+            <div class="menu-grid-columns">
+                
+                <div class="menu-col">
+                    
+                    <a href="menu.html" class="menu-row">
+                        <div class="menu-thumbnail"></div>
+                        <span class="menu-text">HK1</span>
+                    </a>
+
+                    <a href=" " class="menu-row">
+                        <div class="menu-thumbnail">
+                        </div>
+                        <span class="menu-text">HK2</span>
+                    </a>
+
+                </div>
+
+                
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
